@@ -1,0 +1,57 @@
+default:
+  image:
+    name: cypress/browsers:node18.12.0-chrome107
+    entrypoint: []
+
+# define stages
+stages:
+  - build
+  - UI-Tests
+
+
+# this job installs NPM dependencies and Cypress
+install:
+  stage: build
+  script:
+    - npm ci
+    - $(npm bin)/cypress verify
+
+# template for UI stages
+.ui_job_template:
+  script:
+    - npm ci
+    - $(npm bin)/cypress run --env "--browser $BROWSER --config-file=cypress/config/cypress.$TESTS_ENV.config.ts --config video=$VIDEO --spec "$SPEC_PATH"
+  retry: 1
+  dependencies:
+    - install
+  timeout: 20m
+  when: always
+
+# features jobs
+
+login_tests:
+  extends: .ui_job_template
+  stage: UI-Tests
+  variables:
+    TESTS_ENV: "dev"
+    SPEC_PATH: "**/e2e/login.feature"
+    BROWSER: "chrome"
+    VIDEO: false
+   
+books_tests:
+  extends: .ui_job_template
+  stage: UI-Tests
+  variables:
+    TESTS_ENV: "dev"
+    SPEC_PATH: "**/e2e/books.feature"
+    BROWSER: "chrome"
+    VIDEO: false
+
+user_profile_tests:
+  extends: .ui_job_template
+  stage: UI-Tests
+  variables:
+    TESTS_ENV: "dev"
+    SPEC_PATH: "**/e2e/userProfile.feature"
+    BROWSER: "chrome"
+    VIDEO: false

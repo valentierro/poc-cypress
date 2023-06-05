@@ -1,0 +1,8 @@
+**/fixtures/*
+**/screenshots/
+**/videos/
+**/results/
+**/reports/
+node_modules
+**/downloads/
+cucumber-messages.ndjson

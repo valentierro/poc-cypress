@@ -1,0 +1,57 @@
+{
+  "name": "cypress-poc",
+  "version": "1.0.0",
+  "description": "Cypress poc with POM",
+  "main": "index.js",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "17.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+    "@esbuild-plugins/node-modules-polyfill": "0.2.2",
+    "@faker-js/faker": "^8.0.2",
+    "@types/node": "^20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "axios": "^0.24.0",
+    "cypress": "12.13.0",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb": "^19.0.3",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "multiple-cucumber-html-reporter": "^3.4.0",
+    "prettier": "^2.8.8",
+    "tsify": "^5.0.4",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "generate-html-report": "node ./cypress/support/MultipleCucumberHtmlReporter.ts",
+    "run-all-ui": "npx cypress run --spec 'cypress/e2e/**/*.feature'",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix"
+  },
+  "keywords": [
+    "cypress",
+    "e2e"
+  ],
+  "author": "Erick Santos",
+  "license": "ISC",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step_definitions/*.ts",
+    "commonPath": "cypress/support/step_definitions/common",
+    "html":{
+      "enabled": true
+    },
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/results/multiple-report-json",
+      "filePrefix": "",
+      "fileSuffix": ".json"
+    }
+  }
+}

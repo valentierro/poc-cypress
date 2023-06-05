@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "declaration": true,
+      "strict": true,
+      "strictNullChecks":false,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "removeComments": true,
+      "noUnusedLocals": true,
+      "types": ["node"]
+    }
+  }
