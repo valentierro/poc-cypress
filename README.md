@@ -62,7 +62,9 @@ git version 2.25.1
 Create a folder of your choice, clone the solution:
 
 ```
-git clone https://github.com/valentierro/cypress-base-project.git
+git clone https://github.com/valentierro/poc-cypress.git
+or
+git clone git@github.com:valentierro/poc-cypress.git
 ```
 
 Open the folder in your source code editor and install the npm packages
